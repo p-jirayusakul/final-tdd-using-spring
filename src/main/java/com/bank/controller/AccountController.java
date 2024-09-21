@@ -41,10 +41,11 @@ public class AccountController {
 		return repository.findById(accId);
 	}
 
-	@RequestMapping(value = "/{srcId}/transfer/{amount}/to/{destId}")
-	public TransferReceipt handleTransfer(@PathVariable("srcId") String srcId,
-			@PathVariable("amount") double amount,
-			@PathVariable("destId") String destId) throws InsufficientFundsException {
-		return service.transfer(amount, srcId, destId);
-	}
+	//	ไม่เกี่ยวกับ account transfer ไม่ควรอยู่ในนี้
+//	@RequestMapping(value = "/{srcId}/transfer/{amount}/to/{destId}")
+//	public TransferReceipt handleTransfer(@PathVariable("srcId") String srcId,
+//			@PathVariable("amount") double amount,
+//			@PathVariable("destId") String destId) throws InsufficientFundsException {
+//		return service.transfer(amount, srcId, destId);
+//	}
 }
