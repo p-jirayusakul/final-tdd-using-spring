@@ -14,6 +14,9 @@ import com.bank.service.TransferService;
 public class AccountControllerTest {
 	@Test
     public void testHandleById() {
+
+		TransferService service = mock(TransferService.class);
+
     	//given
     	String accId = "A123";
 
@@ -22,7 +25,7 @@ public class AccountControllerTest {
     	AccountRepository repository = mock(AccountRepository.class);
     	when(repository.findById(anyString())).thenReturn(account);
 
-		AccountController controller = new AccountController(repository);
+		AccountController controller = new AccountController(repository, service);
     	
     	//when
     	Account result = controller.handleById(accId);
@@ -30,21 +33,4 @@ public class AccountControllerTest {
     	//then
     	assertEquals(account, result);
 	}
-//
-//	@Test
-//	public void testHandleTransfer() throws InsufficientFundsException {
-//    	//given
-//		String srcId = "A123";
-//		String destId = "B123";
-//		AccountController controller = new AccountController();
-//
-//		TransferService service = mock(TransferService.class);
-//		controller.setService(service);
-//
-//    	//when
-//		controller.handleTransfer(srcId, 100d, destId);
-//
-//    	//then
-//		verify(service).transfer(100d, srcId, destId);
-//	}
 }
