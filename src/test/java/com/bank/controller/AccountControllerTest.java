@@ -29,8 +29,9 @@ public class AccountControllerTest {
     	
     	//when
     	Account result = controller.handleById(accId);
+		assertEquals(account, result);
     	
     	//then
-    	assertEquals(account, result);
+		verify(repository, times(1)).findById(accId);
 	}
 }
